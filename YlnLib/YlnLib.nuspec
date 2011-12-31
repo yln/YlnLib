@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <projectUrl>https://github.com/yln/YlnLib</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Swiss Army Knife API</summary>
+    <description>$description$</description>
+    <copyright>Copyright 2011</copyright>
+    <tags>utility common</tags>
+  </metadata>
+</package>

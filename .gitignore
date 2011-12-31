@@ -1,0 +1,10 @@
+bin
+obj
+*.user
+*.suo
+_ReSharper.*
+*.nupkg
+*.snk
+
+/.nuget
+/packages

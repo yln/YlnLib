@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Arguments\NullTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SlotTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

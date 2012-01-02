@@ -46,6 +46,7 @@
     <Compile Include="Arguments\Null.cs" />
     <Compile Include="CanBeNullAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Slot.cs" />
     <Compile Include="VisibleForTestingAttribute.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

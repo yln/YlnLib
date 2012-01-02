@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Args.cs" />
     <Compile Include="CanBeNullAttribute.cs" />
-    <Compile Include="EnumerationExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VisibleForTestingAttribute.cs" />
   </ItemGroup>

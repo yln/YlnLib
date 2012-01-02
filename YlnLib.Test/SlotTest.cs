@@ -122,5 +122,40 @@ namespace YlnLib.Test
       setTooOften.ShouldThrow<InvalidOperationException>()
         .And.Message.Should().Be("blub already set");
     }
+
+    [NukitoFact]
+    public void ShouldAlsoWorkWithValueTypes()
+    {
+      // Arrange
+      var slot = new Slot<int>();
+
+      // Act
+      slot.Set(7);
+      int item = slot.Item;
+
+      // Assert
+      item.Should().Be(7);
+
+      slot.HasItem.Should().BeTrue();
+      slot.HasDefault.Should().BeFalse();
+      slot.CanGet.Should().BeTrue();
+    }
+
+    [NukitoFact]
+    public void ShouldAlsoWorkWithValueTypesAndDefaults()
+    {
+      // Arrange
+      var slot = new Slot<char>('u');
+
+      // Act
+      char item = slot.Item;
+
+      // Assert
+      item.Should().Be('u');
+
+      slot.HasItem.Should().BeFalse();
+      slot.HasDefault.Should().BeTrue();
+      slot.CanGet.Should().BeTrue();
+    }
   }
 }

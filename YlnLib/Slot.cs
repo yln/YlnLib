@@ -36,6 +36,8 @@ namespace YlnLib
 
         return _item;
       }
+
+      set { Set(value); }
     }
 
     public void Set(T item)

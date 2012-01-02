@@ -1,10 +1,11 @@
 ﻿using System;
 using FluentAssertions;
 using Nukito;
+using YlnLib.Arguments;
 
-namespace YlnLib.Test
+namespace YlnLib.Test.Arguments
 {
-  public class ArgsTest
+  public class NullTest
   {
     [NukitoFact]
     public void ShouldThrowArgumentNullExceptionForNullReference()
@@ -13,7 +14,7 @@ namespace YlnLib.Test
       object obj = null;
 
       // Act
-      Action action = () => Args.NotNull(obj, "foo");
+      Action action = () => obj.ThrowIfNull("foo");
 
       // Assert
       action.ShouldThrow<ArgumentNullException>()
@@ -27,7 +28,7 @@ namespace YlnLib.Test
       object obj = new object();
 
       // Act
-      Action action = () => Args.NotNull(obj, "foo");
+      Action action = () => obj.ThrowIfNull("foo");
 
       // Assert
       action.ShouldNotThrow();
@@ -40,10 +41,24 @@ namespace YlnLib.Test
       object obj = new object();
 
       // Act
-      object result = Args.NotNull(obj, "foo");
+      object result = obj.ThrowIfNull("foo");
 
       // Assert
       result.Should().BeSameAs(obj);
+    }
+
+    [NukitoFact]
+    public void ArgumentNameShouldBeValueIfNotSupplied()
+    {
+      // Arrange
+      object obj = null;
+
+      // Act
+      Action action = () => obj.ThrowIfNull();
+
+      // Assert
+      action.ShouldThrow<ArgumentNullException>()
+        .And.ParamName.Should().Be("value");
     }
   }
 }

@@ -4,13 +4,7 @@ namespace YlnLib.Arguments
 {
   public static partial class ArgumentHelper
   {
-    public static T ThrowIfNull<T>([CanBeNull] this T argument)
-      where T : class
-    {
-      return ThrowIfNull(argument, "value");
-    }
-
-    public static T ThrowIfNull<T>([CanBeNull] this T argument, string argumentName)
+    public static T NotNull<T>([CanBeNull] this T argument, string argumentName = "value")
       where T : class
     {
       if (argument == null)

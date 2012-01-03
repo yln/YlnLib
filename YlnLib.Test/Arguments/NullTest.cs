@@ -14,7 +14,7 @@ namespace YlnLib.Test.Arguments
       object obj = null;
 
       // Act
-      Action action = () => obj.ThrowIfNull("foo");
+      Action action = () => obj.NotNull("foo");
 
       // Assert
       action.ShouldThrow<ArgumentNullException>()
@@ -28,7 +28,7 @@ namespace YlnLib.Test.Arguments
       object obj = new object();
 
       // Act
-      Action action = () => obj.ThrowIfNull("foo");
+      Action action = () => obj.NotNull("foo");
 
       // Assert
       action.ShouldNotThrow();
@@ -41,7 +41,7 @@ namespace YlnLib.Test.Arguments
       object obj = new object();
 
       // Act
-      object result = obj.ThrowIfNull("foo");
+      object result = obj.NotNull("foo");
 
       // Assert
       result.Should().BeSameAs(obj);
@@ -54,7 +54,7 @@ namespace YlnLib.Test.Arguments
       object obj = null;
 
       // Act
-      Action action = () => obj.ThrowIfNull();
+      Action action = () => obj.NotNull();
 
       // Assert
       action.ShouldThrow<ArgumentNullException>()

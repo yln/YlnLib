@@ -2,17 +2,31 @@
 
 namespace YlnLib
 {
+  public static class Slot
+  {
+    public static Slot<T> New<T>(string itemName = "Item")
+    {
+      return new Slot<T>(itemName);
+    }
+
+    // Different method name to prevent confusion in case T == typeof(string)
+    public static Slot<T> WithDefault<T>(T defaultIfItemNotSet, string itemName = "Item")
+    {
+      return new Slot<T>(itemName, defaultIfItemNotSet);
+    }
+  }
+
   public class Slot<T>
   {
     private readonly string _itemName;
     private T _item;
 
-    public Slot(string itemName = "Item")
+    internal Slot(string itemName)
     {
       _itemName = itemName;
     }
 
-    public Slot(T defaultIfItemNotSet, string itemName = "Item")
+    internal Slot(string itemName, T defaultIfItemNotSet)
       : this(itemName)
     {
       _item = defaultIfItemNotSet;

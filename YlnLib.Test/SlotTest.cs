@@ -10,7 +10,7 @@ namespace YlnLib.Test
     public void ShouldThrowForEmptySlotWithoutDefault()
     {
       // Arrange
-      var slot = new Slot<string>();
+      var slot = Slot.New<string>();
 
       // Act
       string item = null;
@@ -30,7 +30,7 @@ namespace YlnLib.Test
     public void ShouldNotThrowForEmptySlotWithDefault()
     {
       // Arrange
-      var slot = new Slot<string>(defaultIfItemNotSet: "def");
+      var slot = Slot.WithDefault("def");
 
       // Act
       string item = null;
@@ -49,7 +49,7 @@ namespace YlnLib.Test
     public void ShouldNotThrowForStandardUsageWithoutDefault()
     {
       // Arrange
-      var slot = new Slot<string>();
+      var slot = Slot.New<string>();
 
       // Act
       slot.Set("abc");
@@ -69,7 +69,7 @@ namespace YlnLib.Test
     public void ShouldNotThrowForStandardUsageWithDefaultAndReturnItem()
     {
       // Arrange
-      var slot = new Slot<string>(defaultIfItemNotSet: "def");
+      var slot = Slot.WithDefault("def");
 
       // Act
       slot.Set("abc");
@@ -89,7 +89,7 @@ namespace YlnLib.Test
     public void ShouldThrowForSecondSet()
     {
       // Arrange
-      var slot = new Slot<string>();
+      var slot = Slot.New<string>();
 
       // Act
       slot.Set("first");
@@ -106,7 +106,7 @@ namespace YlnLib.Test
     public void ShouldUseProvidedItemNameForExceptionMessages()
     {
       // Arrange
-      var slot = new Slot<string>(itemName: "blub");
+      var slot = Slot.New<string>("blub");
 
       // Act
       string item = null;
@@ -127,7 +127,7 @@ namespace YlnLib.Test
     public void ShouldAlsoWorkWithValueTypes()
     {
       // Arrange
-      var slot = new Slot<int>();
+      var slot = Slot.New<int>();
 
       // Act
       slot.Set(7);
@@ -145,7 +145,7 @@ namespace YlnLib.Test
     public void ShouldAlsoWorkWithValueTypesAndDefaults()
     {
       // Arrange
-      var slot = new Slot<char>('u');
+      var slot = Slot.WithDefault('u');
 
       // Act
       char item = slot.Item;

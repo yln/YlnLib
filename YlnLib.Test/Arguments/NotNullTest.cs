@@ -5,7 +5,7 @@ using YlnLib.Arguments;
 
 namespace YlnLib.Test.Arguments
 {
-  public class NullTest
+  public class NotNullTest
   {
     [NukitoFact]
     public void ShouldThrowArgumentNullExceptionForNullReference()

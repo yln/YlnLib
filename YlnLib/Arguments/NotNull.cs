@@ -8,9 +8,7 @@ namespace YlnLib.Arguments
       where T : class
     {
       if (argument == null)
-      {
         throw new ArgumentNullException(argumentName);
-      }
 
       return argument;
     }

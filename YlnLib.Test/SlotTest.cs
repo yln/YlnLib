@@ -121,6 +121,8 @@ namespace YlnLib.Test
 
       setTooOften.ShouldThrow<InvalidOperationException>()
         .And.Message.Should().Be("blub already set");
+
+      item.Should().BeNull();
     }
 
     [NukitoFact]
@@ -156,6 +158,33 @@ namespace YlnLib.Test
       slot.HasItem.Should().BeFalse();
       slot.HasDefault.Should().BeTrue();
       slot.CanGet.Should().BeTrue();
+    }
+
+    [NukitoFact]
+    public void ShouldThrowForNullByDefault()
+    {
+      // Arrange 
+      var slot = Slot.New<string>("blub");
+
+      // Act
+      Action action = () => slot.Set(null);
+
+      // Assert
+      action.ShouldThrow<ArgumentNullException>()
+        .And.ParamName.Should().Be("blub");
+    }
+
+    [NukitoFact]
+    public void ShouldNotThrowForNullIfConfigured()
+    {
+      // Arrange 
+      var slot = Slot.New<string>(allowsNull: true);
+
+      // Act
+      Action action = () => slot.Set(null);
+
+      // Assert
+      action.ShouldNotThrow();
     }
   }
 }

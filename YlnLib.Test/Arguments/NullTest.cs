@@ -25,7 +25,7 @@ namespace YlnLib.Test.Arguments
     public void ShouldNotThrowExceptionForNonNullReference()
     {
       // Arrange
-      object obj = new object();
+      var obj = new object();
 
       // Act
       Action action = () => obj.NotNull("foo");
@@ -38,7 +38,7 @@ namespace YlnLib.Test.Arguments
     public void ShouldReturnSameReference()
     {
       // Arrange
-      object obj = new object();
+      var obj = new object();
 
       // Act
       object result = obj.NotNull("foo");

@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arguments\InRange.cs" />
+    <Compile Include="Arguments\Is.cs" />
     <Compile Include="Arguments\NotNull.cs" />
+    <Compile Include="Arguments\OfType.cs" />
     <Compile Include="CanBeNullAttribute.cs" />
     <Compile Include="Throw.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

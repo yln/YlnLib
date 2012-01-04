@@ -34,7 +34,7 @@ namespace YlnLib.Test
 
       // Assert
       action.ShouldThrow<InvalidOperationException>()
-        .And.Message.Should().Be("invalid 2. type System.Void");
+        .WithMessage("invalid 2. type System.Void");
     }
   }
 }

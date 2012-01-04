@@ -22,7 +22,7 @@ namespace YlnLib.Test
       slot.CanGet.Should().BeFalse();
 
       action.ShouldThrow<InvalidOperationException>()
-        .And.Message.Should().Be("Item not set");
+        .WithMessage("Item not set");
       item.Should().BeNull();
     }
 
@@ -99,7 +99,7 @@ namespace YlnLib.Test
       slot.HasItem.Should().BeTrue();
 
       action.ShouldThrow<InvalidOperationException>()
-        .And.Message.Should().Be("Item already set");
+        .WithMessage("Item already set");
     }
 
     [NukitoFact]
@@ -115,12 +115,12 @@ namespace YlnLib.Test
 
       // Assert
       getWithNoItem.ShouldThrow<InvalidOperationException>()
-        .And.Message.Should().Be("blub not set");
+        .WithMessage("blub not set");
 
       slot.Set("first");
 
       setTooOften.ShouldThrow<InvalidOperationException>()
-        .And.Message.Should().Be("blub already set");
+        .WithMessage("blub already set");
 
       item.Should().BeNull();
     }

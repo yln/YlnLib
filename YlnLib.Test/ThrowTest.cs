@@ -4,23 +4,23 @@ using Nukito;
 
 namespace YlnLib.Test
 {
-  public class EnsureTest
+  public class ThrowTest
   {
     [NukitoFact]
-    public void ShouldNotThrowForTrueCondition()
+    public void ShouldNotThrowForFalseCondition()
     {
       // Act
-      Action action = () => En.Sure(true, null);
+      Action action = () => Throw.If(false, null);
 
       // Assert
       action.ShouldNotThrow();
     }
 
     [NukitoFact]
-    public void ShouldThrowForFalseCondition()
+    public void ShouldThrowForTrueCondition()
     {
       // Act
-      Action action = () => En.Sure(false, "message");
+      Action action = () => Throw.If(true, "message");
 
       // Assert
       action.ShouldThrow<InvalidOperationException>();
@@ -30,7 +30,7 @@ namespace YlnLib.Test
     public void ShouldThrowWithFormattedExceptionMessage()
     {
       // Act
-      Action action = () => En.Sure(false, "invalid {0}. type {1}", 2, typeof (void));
+      Action action = () => Throw.If(true, "invalid {0}. type {1}", 2, typeof (void));
 
       // Assert
       action.ShouldThrow<InvalidOperationException>()

@@ -45,15 +45,16 @@ namespace YlnLib
 
     public T Item
     {
-      get
-      {
-        if (!CanGet)
-          throw new InvalidOperationException(_itemName + " not set");
-
-        return _item;
-      }
-
+      get { return Get(); }
       set { Set(value); }
+    }
+
+    public T Get()
+    {
+      if (!CanGet)
+        throw new InvalidOperationException(_itemName + " not set");
+
+      return _item;
     }
 
     public void Set(T item)

@@ -13,8 +13,7 @@ namespace YlnLib.Test
       var slot = Slot.New<string>();
 
       // Act
-      string item = null;
-      Action action = () => item = slot.Item;
+      Action action = () => slot.Get();
 
       // Assert
       slot.HasItem.Should().BeFalse();
@@ -23,7 +22,6 @@ namespace YlnLib.Test
 
       action.ShouldThrow<InvalidOperationException>()
         .WithMessage("Item not set");
-      item.Should().BeNull();
     }
 
     [NukitoFact]
@@ -109,8 +107,7 @@ namespace YlnLib.Test
       var slot = Slot.New<string>("blub");
 
       // Act
-      string item = null;
-      Action getWithNoItem = () => item = slot.Item;
+      Action getWithNoItem = () => slot.Get();
       Action setTooOften = () => slot.Set("second");
 
       // Assert
@@ -121,8 +118,6 @@ namespace YlnLib.Test
 
       setTooOften.ShouldThrow<InvalidOperationException>()
         .WithMessage("blub already set");
-
-      item.Should().BeNull();
     }
 
     [NukitoFact]

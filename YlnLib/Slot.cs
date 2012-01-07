@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace YlnLib
 {
+  [DebuggerStepThrough]
   public static class Slot
   {
     public static Slot<T> New<T>(string itemName = "Item", bool allowsNull = false)

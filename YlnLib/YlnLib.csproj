@@ -43,6 +43,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arguments\ArgumentHelper.cs" />
     <Compile Include="Arguments\InRange.cs" />
     <Compile Include="Arguments\Is.cs" />
     <Compile Include="Arguments\NotNull.cs" />

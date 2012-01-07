@@ -11,14 +11,14 @@ namespace YlnLib.Test.Arguments
     public void ShouldThrowArgumentNullExceptionForNullReference()
     {
       // Arrange
-      object obj = null;
+      object abc = null;
 
       // Act
-      Action action = () => obj.NotNull("foo");
+      Action action = () => Args.Check(() => abc).NotNull();
 
       // Assert
       action.ShouldThrow<ArgumentNullException>()
-        .And.ParamName.Should().Be("foo");
+        .And.ParamName.Should().Be("abc");
     }
 
     [NukitoFact]
@@ -28,7 +28,7 @@ namespace YlnLib.Test.Arguments
       var obj = new object();
 
       // Act
-      Action action = () => obj.NotNull("foo");
+      Action action = () => Args.Check(() => obj).NotNull();
 
       // Assert
       action.ShouldNotThrow();
@@ -41,24 +41,10 @@ namespace YlnLib.Test.Arguments
       var obj = new object();
 
       // Act
-      object result = obj.NotNull("foo");
+      var result = Args.Check(() => obj).NotNull().Value;
 
       // Assert
       result.Should().BeSameAs(obj);
-    }
-
-    [NukitoFact]
-    public void ArgumentNameShouldBeValueIfNotSupplied()
-    {
-      // Arrange
-      object obj = null;
-
-      // Act
-      Action action = () => obj.NotNull();
-
-      // Assert
-      action.ShouldThrow<ArgumentNullException>()
-        .And.ParamName.Should().Be("value");
     }
   }
 }

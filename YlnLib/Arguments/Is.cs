@@ -3,25 +3,26 @@
 namespace YlnLib.Arguments
 {
   // TODO: test
-  public static partial class ArgumentHelper
+  public static partial class ArgumentValidatorExtensions
   {
-    public static T Is<T>(this object argument, string argumentName = "value")
+    public static ArgumentValidator<TNew> Is<TNew, TOld>(this ArgumentValidator<TOld> validator)
     {
-      return (T) Is(argument, typeof (T), argumentName);
+      Is(validator, typeof (TNew));
+      var value = (TNew) (object) validator.Value; // Trick the compiler
+
+      return new ArgumentValidator<TNew>(value, validator.ParameterName);
     }
 
-    public static T Is<T>(this T argument, Type expectedType, string argumentName = "value")
+    public static ArgumentValidator<T> Is<T>(this ArgumentValidator<T> validator, Type instanceOfType)
     {
-// ReSharper disable CompareNonConstrainedGenericWithNull
-      var notNull = argument != null;
-// ReSharper restore CompareNonConstrainedGenericWithNull
+      var value = validator.GetNonNullValue();
 
-      if (notNull && !expectedType.IsInstanceOfType(argument))
+      if (!instanceOfType.IsInstanceOfType(value))
         throw new ArgumentException(
-          string.Format("Invalid argument type '{0}', expected instance of '{1}'", argument.GetType(), expectedType),
-          argumentName);
+          string.Format("Invalid argument type '{0}', expected instance of '{1}'", value.GetType(), instanceOfType),
+          validator.ParameterName);
 
-      return argument;
+      return validator;
     }
   }
 }

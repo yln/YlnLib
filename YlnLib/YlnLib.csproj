@@ -43,9 +43,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arguments\ArgumentHelper.cs" />
+    <Compile Include="Arguments\Args.cs" />
+    <Compile Include="Arguments\ArgumentValidator.cs" />
+    <Compile Include="Arguments\ArgumentValidatorExtensions.cs" />
     <Compile Include="Arguments\InRange.cs" />
     <Compile Include="Arguments\Is.cs" />
+    <Compile Include="Arguments\NotEmpty.cs" />
     <Compile Include="Arguments\NotNull.cs" />
     <Compile Include="Arguments\OfType.cs" />
     <Compile Include="CanBeNullAttribute.cs" />

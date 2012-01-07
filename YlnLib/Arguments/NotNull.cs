@@ -2,15 +2,15 @@
 
 namespace YlnLib.Arguments
 {
-  public static partial class ArgumentHelper
+  public static partial class ArgumentValidatorExtensions
   {
-    public static T NotNull<T>([CanBeNull] this T argument, string argumentName = "value")
+    public static ArgumentValidator<T> NotNull<T>(this ArgumentValidator<T> validator)
       where T : class
     {
-      if (argument == null)
-        throw new ArgumentNullException(argumentName);
+      if (validator.Value == null)
+        throw new ArgumentNullException(validator.ParameterName);
 
-      return argument;
+      return validator;
     }
   }
 }

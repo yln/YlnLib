@@ -3,7 +3,7 @@
 namespace YlnLib.Arguments
 {
   [DebuggerStepThrough]
-  public partial class ArgumentHelper
+  public static partial class ArgumentValidatorExtensions
   {
   }
 }

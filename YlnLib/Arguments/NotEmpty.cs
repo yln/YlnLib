@@ -11,6 +11,7 @@ namespace YlnLib.Arguments
     {
       var value = validator.GetNonNullValue();
 
+      // TODO: Major bug!!!!
       if (!value.GetEnumerator().MoveNext())
         new ArgumentException("Argument cannot be empty", validator.ParameterName);
 
